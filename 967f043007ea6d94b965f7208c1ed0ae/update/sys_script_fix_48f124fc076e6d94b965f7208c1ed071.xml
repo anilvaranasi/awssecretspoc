@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>setPassword2</name>
+        <record_for_rollback>false</record_for_rollback>
+        <script><![CDATA[//set();
+get();
+function set() {
+var  gr =  new GlideRecord('x_146833_passwor_0_credential_store');
+gr.setDisplayValue('password2', "my@Password"); 
+gr.insert();
+}
+
+function get() {
+	var sDebug = '';
+
+var  gr =  new GlideRecord('x_146833_passwor_0_credential_store');
+gr.query();
+if(gr.next()) {
+	sDebug += "sysId of record = " + gr.sys_id;
+	var ge='';
+	ge = gr.getElement('password2');
+	var ged1 = ge.getDecryptedValue(); 
+	sDebug +="\n" +  ged1;
+
+}
+gs.info(sDebug,'anil' );
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>adminanil</sys_created_by>
+        <sys_created_on>2023-04-29 05:07:33</sys_created_on>
+        <sys_id>48f124fc076e6d94b965f7208c1ed071</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>setPassword2</sys_name>
+        <sys_package display_value="Password encryption poc" source="x_146833_passwor_0">967f043007ea6d94b965f7208c1ed0ae</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Password encryption poc">967f043007ea6d94b965f7208c1ed0ae</sys_scope>
+        <sys_update_name>sys_script_fix_48f124fc076e6d94b965f7208c1ed071</sys_update_name>
+        <sys_updated_by>adminanil</sys_updated_by>
+        <sys_updated_on>2023-05-01 18:53:13</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>
